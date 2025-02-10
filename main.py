@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from routes.product_routes import router as product_router
 from routes.user_routes import router as user_router
@@ -12,3 +13,6 @@ app.include_router(order_router, prefix="/api/orders", tags=["Orders"])
 @app.get("/")
 async def root():
     return {"message": "E-commerce API is running"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
